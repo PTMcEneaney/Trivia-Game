@@ -16,8 +16,21 @@ button {
     background-color: #fad75c;
 
 }
+a {
+    color: #f4e774 
+}
+a:hover {
+    color: #fad75c;
+}
 
 .content {
     background-color: #f7ebd1;
     border: 3px solid #80b2a7;
+}
+
+img {
+    width: 100%;
+}
+.startButton {
+    margin: 25% 0px auto 0px;
 }

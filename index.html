@@ -35,43 +35,83 @@
 <body>
     <div class="container my-5">
         <div class="row p-3 text-center">
-            <h1 class="col-12">Seattle Trivia Game!</h1>
+            <h1 class="col-12 m-0">Seattle Trivia Game!</h1>
         </div>
-        <div class="row content mx-3 mb-3 p-3">
+        <div class="row content mx-3 mb-3 p-3 d-none" id="timerDiv">
             <div class="col-6">
-                <h2 class="d-none" id="timerText">Seconds Remaining:</h2>
-                <button class="startButton btn btn-block">Start Game</button>
-
+                <h2 class="text-center" id="questionNum">Question #1</h2>
             </div>
-            <div class="col-6">
-                <h2 class="d-none" id="timerA">&nbsp;</h2>
+            <div class="col-4">
+                <h2 class="d-none text-right" id="timerText">Seconds Remaining:</h2>
             </div>
-
+            <div class="col-2">
+                <h2 class="d-none" id="timerA">30</h2>
+                <h2 class="d-none" id="timerB">&nbsp;</h2>
+            </div>
 
         </div>
-        <div class="row content m-3 p-3">
-            <div class="col-12">
+        <div class="row content m-3 p-3 d-none" id="questionDiv">
+            <div class="col-12 content-center">
                 <div class="page1 d-none">
                     <h2 id="prompt">Question 1</h2>
                     <div>
-                        <button class="guess btn my-1" id="btnA" value="A"></button><br>
-                        <button class="guess btn my-1" id="btnB" value="B"></button><br>
-                        <button class="guess btn my-1" id="btnC" value="C"></button><br>
-                        <button class="guess btn my-1" id="btnD" value="D"></button>
+                        <button class="guess btn btn-block" id="btnA" value="A"></button><br>
+                        <button class="guess btn btn-block" id="btnB" value="B"></button><br>
+                        <button class="guess btn btn-block" id="btnC" value="C"></button><br>
+                        <button class="guess btn btn-block" id="btnD" value="D"></button>
                     </div>
                 </div>
-                <div class="page2 d-none">
-                    <h3 class="d-none" id="timeout">Oops! You ran out of time.</h3>
-                    <h3 id="answer">Correct/incorrect</h3>
-                    <div class="gif">
-                        <iframe src="https://giphy.com/embed/qPccfQiuQh0iI" width="480" height="365" frameBorder="0"
-                            class="giphy giphy-embed" allowFullScreen></iframe>
-                        <p><a class="giphy" href="https://giphy.com/gifs/beatles-qPccfQiuQh0iI">via GIPHY</a></p>
+                <div class="row page2 d-none justify-content-center text-center p-3">
+                    <div class="col-3">
+                        <h3 class="m-3 py-auto" id="rightWrong"></h3>
                     </div>
+                    <div class="col-6">
+                        <iframe src="" width="480" height="365" frameBorder="0" class="giphy-embed gif"
+                            allowFullScreen></iframe>
+                        <p><a class="gif" href="">via GIPHY</a></p>
+                    </div>
+                    <div class="col-3">
+                        <h3 class="m-3 py-auto" id="answer">The correct Answer is: </h3>
+                    </div>
+                </div>
+
+                <div class=" row content-center text-center">
+                    <div class="col-3"></div>
+                    <div class="col-6 page3 d-none">
+                        <h3 class="d-none" id="final">You Finished!<br>Here's how you did:</h3>
+                        <h4 id="correct"></h4>
+                        <h4 id="incorrect"></h4>
+                        <h4 id="unanswered"></h4>
+
+                    </div>
+                    <div class="col-3"></div>
+
                 </div>
             </div>
         </div>
+
+        <div class="row content mx-3 mb-3 p-3">
+            <div class="col-4 pcard">
+                <img src="assets/images/seattlePCard5.jpg" />
+            </div>
+            <div class="col-4 pcard">
+                <button class="startButton btn btn-block">Start Game</button>
+                <img src="assets/images/seattlePCard.jpg" class="startPic d-none" />
+            </div>
+            <div class="col-4 pcard">
+                <img src="assets/images/seattlePCard6.jpg" />
+            </div>
+
+        </div>
     </div>
+    <div class="container">
+        <div class="row footer text-center mt-1 mx-0">
+            <div class="col-12">
+                <p class="float-left m-3"><a href="https://ptmceneaney.github.io/Responsive-Portfolio/"
+                        target="_blank">Learn about the creator of this game!</a></p>
+                <p class='float-right m-3'>© 2019 Copyright</p>
+            </div>
+        </div>
     </div>
 </body>
 
