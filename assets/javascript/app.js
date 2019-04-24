@@ -11,99 +11,177 @@ API Key: 4J80i9OSkoZGm3lxqIXzE1rSwiOXkvAi
 
 
 $(document).ready(function() {
-var gamePlaying;
-var correct = 0;
-var incorrect = 0;
-var unanswered = 0;
-
-var questions = [
-    {
-        prompt: "Testing",
-        btnA: "one",
-        btnB: "two",
-        btnC: "three",
-        btnD: "four",
-        answer: "B",
-    },
-  /*   "1" = {
-
-    },
-    "2" =  */
-];
+    var gamePlaying;
+    var correct = 0;
+    var incorrect = 0;
+    var unanswered = 0;
+    var thirtySec;
+    var threeSec;
+    var timeLeftA = 30;
+    var timeLeftB = 3;
+    var currentQuestion = 0;
 
 
-var init = function() {
-    $('.startButton').removeClass('d-none');
-};
 
-var startGame = function () {
-    gamePlaying = true
-    $('.startButton').addClass('d-none');
-}
+    var questions = [
+        {
+            prompt: "Question",
+            btnA: "What is the blah?",
+            btnB: "two",
+            btnC: "three",
+            btnD: "four",
+            answer: "B",
+        },
+        {
+            prompt: "Testing1",
+            btnA: "What is the blahhhh?",
+            btnB: "two",
+            btnC: "three",
+            btnD: "four",
+            answer: "B",
+        },
+        {
+            prompt: "Testing2",
+            btnA: "What is the blahhhh?",
+            btnB: "two",
+            btnC: "three",
+            btnD: "four",
+            answer: "B",
+        },
+        {
+            prompt: "Testing3",
+            btnA: "What is the blahhhh?",
+            btnB: "two",
+            btnC: "three",
+            btnD: "four",
+            answer: "B",
+        },
+        {
+            prompt: "Testing4",
+            btnA: "What is the blahhhh?",
+            btnB: "two",
+            btnC: "three",
+            btnD: "four",
+            answer: "B",
+        },
+    ];
 
-var currentQuestion = 0;
-var nextQuestion = function (letter) {
-    $('#btn' + letter).html(questions[currentQuestion]["btn" + letter]);
-    $('#prompt').html(questions[currentQuestion].prompt);
-};
 
-setInterval(timer, 1000);
+    var init = function () {
+        $('.startButton').removeClass('d-none');
+        gamePlaying = false;
+    };
 
-function timer() {
-    
-}
+    var startGame = function () {
+        gamePlaying = true;
+        currentQuestion = 0;
+        $('.startButton').addClass('d-none');
 
+    };
 
-nextQuestion("A");
-nextQuestion("B");
-nextQuestion("C");
-nextQuestion("D");
-//Start button to call the start function
-//init --> display start button, reset all values
+    var btnQuestion = function (letter) {
+        $('#btn' + letter).html(questions[currentQuestion]["btn" + letter]);
+        $('#prompt').html(questions[currentQuestion].prompt);
+    };
 
-//on click START--> hide start button & nextQuestion function
-$('button').on("click", function(){
-    if ($(this).hasClass('startButton')) {
-        startGame();
-        nextQuestion();
-    } else if ($(this).hasClass('guess')) {
+    var nextQuestion = function () {
+        btnQuestion("A");
+        btnQuestion("B");
+        btnQuestion("C");
+        btnQuestion("D");
+
+        timeLeftA = 10;
+        thirtySec = setInterval(timerA, 1000);
+
+        $('.page1').removeClass('d-none');
+        $('.page2').addClass('d-none'); 
+
+    };
+
+    var postQuestion = function () {
+
+        timeLeftB = 3;
+        threeSec = setInterval(timerB, 1000);
+
         $('.page1').addClass('d-none');
         $('.page2').removeClass('d-none');
-        if ($(this)[0].value == questions[currentQuestion].answer) {
-            correct++;
-        } else {
-            incorrect++;
-        }
 
-        console.log($(this)[0].value);
-    } else {
-        console.log('something went wrong');
-    }
-});
-
-//nextQuestion function =  display title, timer, and question sections (with hover css)
-//start timer at 30 seconds 
-
-//on timer = 0 OR on click = GUESS ANSWER
-// --> display correct/incorrect text
-// currentquestion++
-// display "the correct answer was ___" & gif of correct answer
-//set timer for 3 seconds, then pull the next question
+        currentQuestion++;
+        console.log(currentQuestion);
 
 
+    };
 
 
+        //setInterval(timer, 3*1000);
 
+     var timerA = function() {
+            if (timeLeftA >= 0) {
+                $('#timerA').text('Seconds Remaining: ' + timeLeftA);
+                timeLeftA--;
+            } else {
+                $('#timerA').addClass('d-none');
+                $('#timerB').removeClass('d-none');
 
+                clearInterval(thirtySec);
 
+                postQuestion();
+                return;
+            }
+        };
+        var timerB = function() {
+            if (timeLeftB >= 0) {
+                $('#timerB').text('Seconds Remaining: ' + timeLeftB);
+                timeLeftB--;
+            } else {
+                $('#timerB').addClass('d-none');
+                $('#timerA').removeClass('d-none');
 
+                clearInterval(threeSec);
+                nextQuestion();
 
+                return;
+            }
+        };
 
+        //Start button to call the start function
+        //init --> display start button, reset all values
+        //on click START--> hide start button & nextQuestion function
+        $('button').on("click", function() {
+            if ($(this).hasClass('startButton')) {
+                startGame();
+                nextQuestion();
+                $('.page1').removeClass('d-none');
 
+            } else if ($(this).hasClass('guess')) {
+                $('.page1').addClass('d-none');
+                $('.page2').removeClass('d-none');
+                postQuestion();
 
-//win condition --> game playing = false
-//create and display div with correct, incorrect, and unasnwered variables
+                if ($(this)[0].value == questions[currentQuestion].answer) {
+                    correct++;
+                } else {
+                    incorrect++;
+                }
 
-init();
+                console.log($(this)[0].value);
+            } else {
+                console.log('something went wrong');
+            }
+        });
 
-});
+        //nextQuestion function =  display title, timer, and question sections (with hover css)
+        //start timer at 30 seconds 
+
+        //on timer = 0 OR on click = GUESS ANSWER
+        // --> display correct/incorrect text
+        // currentquestion++
+        // display "the correct answer was ___" & gif of correct answer
+        //set timer for 3 seconds, then pull the next question
+
+        //win condition --> game playing = false
+        //create and display div with correct, incorrect, and unasnwered variables
+
+        init();
+
+    });
