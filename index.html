@@ -33,14 +33,20 @@
 <body>
     <div class="container">
         <div class="row">
-            <h1 class="col-12">Trivia Game!</h1>
+            <h1 class="col-12">Seattle Trivia Game!</h1>
         </div>
         <div class="row">
-            <div class="col-12">
-            <h2 id="timerA"></h2>
-            <h2 id="timerB"></h2>
-            <button class="startButton">Start Game</button>
-        </div>
+            <div class="col-6">
+                <h2 class="d-none" id="timerText">Seconds Remaining:</h2>
+                <button class="startButton">Start Game</button>
+
+            </div>
+            <div class="col-6">
+                <h2 class="d-none" id="timerA">&nbsp;</h2>
+                <h2 class="d-none" id="timerB">&nbsp;</h2>
+            </div>
+            
+        
         </div>
         <div class="row">
             <div class="col-12">
@@ -54,7 +60,7 @@
                     </div>
                 </div>
                 <div class="page2 d-none">
-                    <h3>Correct/incorrect</h3>
+                    <h3 id="answer">Correct/incorrect</h3>
                     <div>Giphy</div>
                 </div>
             </div>

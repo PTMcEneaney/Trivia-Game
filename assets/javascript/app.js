@@ -23,49 +23,25 @@ $(document).ready(function() {
 
 
 
-    var questions = [
+   questions = [
         {
-            prompt: "Question",
-            btnA: "What is the blah?",
-            btnB: "two",
-            btnC: "three",
-            btnD: "four",
+            prompt: "The ______ Party was a group of American Pioneers credited with founding Seattle in 1851",
+            btnA: "Attle",
+            btnB: "Denny",
+            btnC: "Vancouver",
+            btnD: "Smith",
             answer: "B",
         },
         {
-            prompt: "Testing1",
-            btnA: "What is the blahhhh?",
-            btnB: "two",
-            btnC: "three",
-            btnD: "four",
+            prompt: "The Boeing Company, a company founded in Seattle originially sold ______ before their success with Airplanes",
+            btnA: "Bicycles",
+            btnB: "Logging Equipment",
+            btnC: "Farm Equiptment",
+            btnD: "Boats",
             answer: "B",
         },
-        {
-            prompt: "Testing2",
-            btnA: "What is the blahhhh?",
-            btnB: "two",
-            btnC: "three",
-            btnD: "four",
-            answer: "B",
-        },
-        {
-            prompt: "Testing3",
-            btnA: "What is the blahhhh?",
-            btnB: "two",
-            btnC: "three",
-            btnD: "four",
-            answer: "B",
-        },
-        {
-            prompt: "Testing4",
-            btnA: "What is the blahhhh?",
-            btnB: "two",
-            btnC: "three",
-            btnD: "four",
-            answer: "B",
-        },
+       
     ];
-
 
     var init = function () {
         $('.startButton').removeClass('d-none');
@@ -117,7 +93,7 @@ $(document).ready(function() {
 
      var timerA = function() {
             if (timeLeftA >= 0) {
-                $('#timerA').text('Seconds Remaining: ' + timeLeftA);
+                $('#timerA').text(timeLeftA);
                 timeLeftA--;
             } else {
                 $('#timerA').addClass('d-none');
@@ -126,12 +102,13 @@ $(document).ready(function() {
                 clearInterval(thirtySec);
 
                 postQuestion();
+                console.log(currentQuestion);
                 return;
             }
         };
         var timerB = function() {
             if (timeLeftB >= 0) {
-                $('#timerB').text('Seconds Remaining: ' + timeLeftB);
+                $('#timerB').text(timeLeftB);
                 timeLeftB--;
             } else {
                 $('#timerB').addClass('d-none');
@@ -152,15 +129,21 @@ $(document).ready(function() {
                 startGame();
                 nextQuestion();
                 $('.page1').removeClass('d-none');
+                $('#timerA').removeClass('d-none');
+                $('#timerText').removeClass('d-none');
+
+
 
             } else if ($(this).hasClass('guess')) {
                 $('.page1').addClass('d-none');
                 $('.page2').removeClass('d-none');
-                postQuestion();
+                timeLeftA = 0;
 
                 if ($(this)[0].value == questions[currentQuestion].answer) {
+                    $('#answer').text("You got it right!");
                     correct++;
                 } else {
+                    $('#answer').text("Maybe the next question will be easier");
                     incorrect++;
                 }
 
