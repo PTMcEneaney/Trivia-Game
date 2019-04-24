@@ -1,6 +1,23 @@
 #timerA {
     border: 2px solid red;   
 }
-#timerB {
-    border: 2px solid blue;   
+body {
+    background-image: url(../images/seattleKrollMap.jpg);
+}
+.container {
+    background-color: #83b26f;
+    border: 2px solid #050d0b;
+}
+
+button {
+    background-color: #f4e774;
+}
+.btn:hover {
+    background-color: #fad75c;
+
+}
+
+.content {
+    background-color: #f7ebd1;
+    border: 3px solid #80b2a7;
 }
