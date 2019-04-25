@@ -94,7 +94,7 @@ $(document).ready(function() {
             btnC: "Sasquatch Sightings",
             btnD: "Identical Twins",
             answer: "B",
-            giphy: "https://giphy.com/embed/Q80Dgh53HDlcZsRoYA",
+            giphy: "https://giphy.com/embedjGpocv0a1U7zbXQ4",
         },
     ];
 
@@ -149,7 +149,6 @@ $(document).ready(function() {
             $('.page2').addClass('d-none').removeClass('d-flex');
             $('#final').removeClass('d-none');
 
-            console.log(correct, incorrect, unanswered);
         } else {
             btnQuestion("A");
             btnQuestion("B");
@@ -164,7 +163,7 @@ $(document).ready(function() {
             $('.gif').attr("src", questions[currentQuestion].giphy);
             $('.gif').attr("href", questions[currentQuestion].giphy);
     
-            timeLeftA = 10;
+            timeLeftA = 30;
             thirtySec = setInterval(timerA, 1000);
         }
 
@@ -195,7 +194,6 @@ $(document).ready(function() {
                 // $('#timerB').removeClass('d-none');
                 $('#rightWrong').text('Looks like you ran out of time');
                 $('#answer').text("The Correct Answer is: " + questions[currentQuestion]["btn" + questions[currentQuestion].answer]);
-                alert("test");
 
                 clearInterval(thirtySec);
 
@@ -248,22 +246,8 @@ $(document).ready(function() {
                 // timeLeftA = 0;
                 clearInterval(thirtySec);
                 postQuestion();
-                console.log("Button clicked:" + $(this)[0].value);
-
-
-                /* if ($(this)[0].value == questions[currentQuestion].answer) {
-                    $('#rightWrong').html("<h3>You got it right!</h3>");
-                    correct++;
-                    console.log("right");
-                } else {
-                    $('#rightWrong').html("<h3>Sorry, that was incorrect</h3>");
-                    incorrect++;
-                    console.log("wrong");
-                } */
 
                 var solution = questions[currentQuestion - 1].answer;
-                console.log("correct answer: " + solution);
-
 
                 if ($(this)[0].value == solution) {
                     $('#rightWrong').html("<h3>You got it right!</h3>");

@@ -1,5 +1,7 @@
 body {
     background-image: url(../images/seattleKrollMap.jpg);
+    font-family: 'Abel', sans-serif;
+    
 }
 .container {
     background-color: #83b26f;
@@ -8,6 +10,8 @@ body {
 
 button {
     background-color: #f4e774;
+    letter-spacing: 3px;
+
 }
 .btn:hover {
     background-color: #fad75c;
@@ -19,7 +23,17 @@ a {
 a:hover {
     color: #fad75c;
 }
+h1 {
+    font-family: 'Kumar One', cursive;
+    font-size: 45px;
+}
+h4 {
+    font-size: 30px;
+}
+h3 {
+    font-size: 30px;
 
+}
 .content {
     background-color: #f7ebd1;
     border: 3px solid #80b2a7;
@@ -27,7 +41,4 @@ a:hover {
 
 img {
     width: 100%;
-}
-.startButton {
-    margin: 25% 0px auto 0px;
 }
