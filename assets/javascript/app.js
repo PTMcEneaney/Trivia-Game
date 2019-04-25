@@ -98,7 +98,6 @@ $(document).ready(function() {
         },
     ];
 
-    //http://mentalfloss.com/article/67858/25-things-you-should-know-about-seattle
 
     var init = function () {
         $('.startButton').removeClass('d-none');
